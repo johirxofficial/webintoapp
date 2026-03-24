@@ -22,29 +22,27 @@ public class MainActivity extends AppCompatActivity {
 
         // রিয়েল অ্যাপ ভাইব এবং পারফরম্যান্স বুস্ট
         webSettings.setJavaScriptEnabled(true);
-        webSettings.setDomStorageEnabled(true); // আধুনিক ওয়েবসাইটের জন্য মাস্ট
+        webSettings.setDomStorageEnabled(true);
         webSettings.setLoadWithOverviewMode(true);
         webSettings.setUseWideViewPort(true);
         
-        // ক্যাশ সিস্টেম পুরোপুরি অফ করে দেওয়া হলো যাতে স্টোরেজ না খায়
-        webSettings.setAppCacheEnabled(false);
+        // নতুন সিস্টেমে ক্যাশ কন্ট্রোল (পুরানো setAppCacheEnabled বাদ দেওয়া হয়েছে)
         webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
 
-        // অ্যাপের ভেতরেই লিংক ওপেন হবে, বাইরের ব্রাউজারে যাবে না
+        // অ্যাপের ভেতরেই লিংক ওপেন হবে
         mWebView.setWebViewClient(new WebViewClient());
 
         // ==========================================
-        // নিচে আপনার পছন্দমতো যেকোনো একটি চালু রাখুন:
+        // নিচের যেকোনো একটি অপশন ব্যবহার করুন:
         // ==========================================
 
-        // Option 1: REMOTE RESOURCE (যেকোনো ওয়েবসাইটের লিংক)
+        // Option 1: REMOTE RESOURCE (আপনার সাইটের লিঙ্ক)
         mWebView.loadUrl("https://google.com");
 
         // Option 2: LOCAL RESOURCE (আপনার assets ফোল্ডারের index.html)
         // mWebView.loadUrl("file:///android_asset/index.html");
     }
 
-    // ব্যাক বাটন চাপলে অ্যাপ ক্লোজ না হয়ে আগের পেজে যাবে
     @Override
     public void onBackPressed() {
         if (mWebView.canGoBack()) {
